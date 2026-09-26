@@ -1,0 +1,42 @@
+{
+  "name": "sillar-data-grid",
+  "version": "0.1.0",
+  "description": "Accessible, typed React data grid with sorting, filtering, selection, pagination, and responsive layouts.",
+  "type": "module",
+  "license": "MIT",
+  "author": "@uppy19d0 (https://github.com/uppy19d0)",
+  "repository": { "type": "git", "url": "git+https://github.com/uppy19d0/sillar-data-grid.git" },
+  "bugs": { "url": "https://github.com/uppy19d0/sillar-data-grid/issues" },
+  "homepage": "https://github.com/uppy19d0/sillar-data-grid#readme",
+  "keywords": ["react", "data-grid", "table", "accessibility", "typescript", "sorting", "pagination", "dark-mode"],
+  "sideEffects": ["**/*.css"],
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm test && npm_config_cache=.npm-cache npm pack --dry-run",
+    "prepublishOnly": "npm run check"
+  },
+  "peerDependencies": { "react": ">=18.2.0", "react-dom": ">=18.2.0" },
+  "devDependencies": {
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.3.3",
+    "axe-core": "^4.13.0",
+    "jsdom": "^26.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.3"
+  },
+  "publishConfig": { "access": "public", "provenance": true },
+  "engines": { "node": ">=20" }
+}
