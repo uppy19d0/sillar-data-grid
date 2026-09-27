@@ -10,7 +10,7 @@
   "homepage": "https://github.com/uppy19d0/sillar-data-grid#readme",
   "keywords": ["react", "data-grid", "table", "accessibility", "typescript", "sorting", "pagination", "dark-mode"],
   "sideEffects": ["**/*.css"],
-  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md"],
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md", "SECURITY.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
