@@ -54,6 +54,37 @@ test('filters, selects visible rows, and paginates', () => {
   assert.equal(selected.size, 2);
 });
 
+test('supports density, localized labels, and row actions', () => {
+  const document = render({
+    density: 'compact',
+    filter: '',
+    onFilterChange: () => {},
+    selectable: true,
+    pagination: { page: 0, pageSize: 2 },
+    onPageChange: () => {},
+    rowActions: (row) => React.createElement('button', { type: 'button' }, `Open ${row.name}`),
+    labels: {
+      filter: 'Buscar clientes',
+      rows: (count) => `${count} filas`,
+      selectAllRows: 'Seleccionar filas visibles',
+      selectRow: (row) => `Seleccionar ${row.name}`,
+      pagination: 'Paginación de clientes',
+      pageStatus: (page, pageCount) => `Página ${page + 1} de ${pageCount}`,
+      previousPage: 'Anterior',
+      nextPage: 'Siguiente',
+      actions: 'Acciones',
+    },
+  });
+
+  assert.ok(document.querySelector('.sdg-root')?.classList.contains('sdg-density-compact'));
+  assert.equal(document.querySelector('.sdg-toolbar output')?.textContent, '3 filas');
+  assert.equal(document.querySelector('thead input[type="checkbox"]')?.getAttribute('aria-label'), 'Seleccionar filas visibles');
+  assert.equal(document.querySelector('nav')?.getAttribute('aria-label'), 'Paginación de clientes');
+  assert.equal(document.querySelector('nav span')?.textContent, 'Página 1 de 2');
+  assert.equal(document.querySelector('th.sdg-actions')?.textContent, 'Acciones');
+  assert.equal(document.querySelectorAll('td.sdg-actions button').length, 2);
+});
+
 test('has no serious or critical automated accessibility violations', async () => {
   const document = render({ selectable: true, caption: 'Customer accounts' });
   const axe = (await import(`${import.meta.resolve('axe-core')}?dom=${Date.now()}`)).default;

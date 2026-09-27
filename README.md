@@ -89,6 +89,34 @@ Automated checks improve coverage but do not replace testing with screen readers
 
 Pass `sort` with `onSortChange`, `selectedRows` with `onSelectedRowsChange`, or `pagination` with `onPageChange` to control state. Set `serverSide` when rows already represent the current server response; `totalRows` then controls the page count.
 
+## Enterprise interface features
+
+The grid now includes small but important production hooks for real applications:
+
+- `density="compact | comfortable | spacious"` for dashboards, backoffices, and content-heavy pages.
+- `labels` for localization of filters, result counts, selection, pagination, loading, and row actions.
+- `rowActions` and `rowActionsHeader` for view/edit/export menus without custom table plumbing.
+- `className`, `headerClassName`, and `cellClassName` per column for status chips, numeric cells, risk states, and product-specific formatting.
+- Responsive card layout on small screens while preserving semantic table markup on larger screens.
+
+```tsx
+<DataGrid
+  aria-label="Invoices"
+  density="compact"
+  rows={invoices}
+  columns={columns}
+  getRowId={(invoice) => invoice.id}
+  rowActions={(invoice) => <button type="button">Open {invoice.number}</button>}
+  labels={{
+    filter: 'Search invoices',
+    rows: (count) => `${count} invoices`,
+    actions: 'Actions',
+    previousPage: 'Previous',
+    nextPage: 'Next',
+  }}
+/>
+```
+
 ## Theming
 
 Override semantic tokens on `:root`, `.dark`, `[data-theme="dark"]`, or a product wrapper:
@@ -101,6 +129,15 @@ Override semantic tokens on `:root`, `.dark`, `[data-theme="dark"]`, or a produc
   --sdg-border: #dbe3ee;
 }
 ```
+
+## Public API
+
+- `DataGrid<Row>(props)`
+- `DataGridColumn<Row>`
+- `DataGridPagination`
+- `DataGridLabels<Row>`
+- `DataGridDensity`
+- `SortState`, `SortDirection`, and `RowId`
 
 ## Roadmap
 
