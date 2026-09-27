@@ -4,6 +4,10 @@
 
 <p align="center"><strong>Made with love in the Dominican Republic by <a href="https://github.com/uppy19d0">@uppy19d0</a>.</strong></p>
 
+[![CI](https://github.com/uppy19d0/sillar-data-grid/actions/workflows/ci.yml/badge.svg)](https://github.com/uppy19d0/sillar-data-grid/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/sillar-data-grid.svg)](https://www.npmjs.com/package/sillar-data-grid)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
 ## Why
 
 Sillar Data Grid sits between headless table engines and large enterprise suites. It provides polished defaults, semantic table markup, keyboard navigation, responsive layouts, and controlled APIs while remaining independent from a component runtime.
@@ -73,6 +77,13 @@ export function CustomerGrid({ customers }: { customers: Customer[] }) {
 - Respects `prefers-reduced-motion`.
 
 Automated checks improve coverage but do not replace testing with screen readers and disabled users.
+
+## Production readiness
+
+- CI runs TypeScript, build output generation, accessibility-focused tests, and npm package previews.
+- Releases publish from version tags with npm provenance.
+- Public security, contribution, and code of conduct policies are included in the repository and npm package.
+- The grid is SSR-friendly and uses peer React dependencies instead of bundling React.
 
 ## Controlled and server-side usage
 
