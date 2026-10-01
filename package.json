@@ -1,6 +1,6 @@
 {
   "name": "sillar-data-grid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Accessible, typed React data grid with sorting, filtering, selection, pagination, and responsive layouts.",
   "type": "module",
   "license": "MIT",
