@@ -114,3 +114,20 @@ Override semantic tokens on `:root`, `.dark`, `[data-theme="dark"]`, or a produc
 ## License
 
 MIT
+
+
+## Supply-chain verification and runtime permissions
+
+Runtime: React data-grid rendering and local filtering/sorting/pagination. Application code owns data fetching, authorization and server-side filtering. The package is not a data-access security boundary.
+
+Install the exact version required by your application and commit your lockfile. Releases request npm provenance from GitHub Actions, and CI checks the dependency graph and package contents before publication. The artifact guard rejects recognized credential patterns, private/environment files, unsafe paths, missing attribution/metadata and unexpected consumer install hooks. It is a focused release check, not proof that every secret or malicious behavior is detectable.
+
+```sh
+npm install --save-exact sillar-data-grid@0.1.2
+npm audit
+npm audit signatures
+```
+
+When the installed graph has no registry dependencies, npm may report that there are no dependency signatures to verify.
+
+Inspect the exact-version [Socket report](https://socket.dev/npm/package/sillar-data-grid/overview/0.1.2) and the npm provenance link. A successful CI check is not the same as a package score of 100. Socket also weighs dependency counts and real adoption; no score, download history or security guarantee is fabricated. Report suspected issues through SECURITY.md.
